@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>藥材介紹網站 Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>藥材介紹</h1>
+        <nav>
+            <a href="index.html" class="active">首頁</a>
+            <a href="upload.html">上傳藥材</a>
+        </nav>
+    </header>
+    
+    <main>
+        <h2>藥材總覽</h2>
+        <div id="herb-grid" class="grid-container"></div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // 在首頁上執行 loadHerbGrid 函數
+        document.addEventListener('DOMContentLoaded', loadHerbGrid);
+    </script>
+</body>
+</html>

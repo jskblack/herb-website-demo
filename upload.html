@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上傳藥材</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>藥材介紹</h1>
+        <nav>
+            <a href="index.html">首頁</a>
+            <a href="upload.html" class="active">上傳藥材</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>上傳新藥材 (Demo)</h2>
+        <p>注意：這是一個靜態 Demo 頁面，上傳功能尚未啟用。</p>
+        
+        <form id="upload-form" class="form-container">
+            <div class="form-group">
+                <label for="name">藥材名稱：</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="description">詳細資訊：</label>
+                <textarea id="description" name="description" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="image">藥材圖片：</label>
+                <input type="file" id="image" name="image" accept="image/*">
+            </div>
+            <button type="submit" class="btn">送出 (Demo)</button>
+        </form>
+    </main>
+
+    <script>
+        // 阻止表單真的提交，並顯示提示
+        document.getElementById('upload-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // 阻止表單提交
+            alert('這僅是 Demo 頁面，資料不會被儲存。');
+        });
+    </script>
+</body>
+</html>
