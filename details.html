@@ -16,17 +16,27 @@
     </header>
 
     <main>
-        <div id="herb-details-container">
-            </div>
+        <div id="herb-details-container"></div>
     </main>
 
-    <div id="lightbox-modal" class="modal">
-        <span class="close-btn" id="close-btn">&times;</span>
-        <img class="modal-content" id="lightbox-img">
+    <div id="gallery-modal" class="modal">
+        <span class="close-btn" id="gallery-close-btn">&times;</span>
+        
+        <div class="modal-content-slider">
+            
+            <div id="modal-gallery-container" class="gallery-container">
+                
+                <div class="slider" id="modal-slider">
+                    </div>
+                
+                <button class="slide-btn prev" id="modal-prev-btn">&lt;</button>
+                <button class="slide-btn next" id="modal-next-btn">&gt;</button>
+            </div>
+
+        </div>
     </div>
     <script src="script.js"></script>
     <script>
-        // 在詳細頁上執行 loadHerbDetails 函數
         document.addEventListener('DOMContentLoaded', loadHerbDetails);
     </script>
 </body>

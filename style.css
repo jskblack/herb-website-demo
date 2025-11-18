@@ -127,45 +127,103 @@ header nav a.active {
 }
 
 /* =================================== */
-/* 3. 新增的相簿 (Slider) 樣式         */
+/* 1. 頁面上的預覽圖 & 開啟按鈕        */
+/* =================================== */
+.main-image-preview {
+    width: 100%;
+    max-width: 400px; /* 讓預覽圖小一點 */
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    background-color: #eee;
+}
+
+#open-gallery-btn {
+    /* 重複使用 .btn 樣式 */
+    margin-bottom: 25px; 
+}
+
+
+/* =================================== */
+/* 2. 全新的「相簿 Modal」樣式         */
 /* =================================== */
 
-/* 相簿外層容器 */
-.gallery-container {
-    position: relative; /* 讓左右按鈕可以定位 */
+/* Modal 背景 (灰色覆蓋層) */
+.modal {
+    display: none; /* 預設隱藏 */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
     width: 100%;
-    max-width: 600px; /* 您可以調整最大寬度 */
-    margin: 0 auto 20px auto;
-    overflow: hidden; /* 隱藏其他圖片 */
-    border-radius: 8px;
-    background-color: #eee;
-    aspect-ratio: 3 / 2; /* 保持 3:2 的比例 */
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
 }
 
-/* 滑動軌道 (裝載所有圖片) */
-.slider {
+/* Modal 關閉按鈕 */
+.modal .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1010; /* 確保在最上層 */
+    transition: color 0.2s;
+}
+.modal .close-btn:hover {
+    color: #bbb;
+}
+
+/* Modal 內容區 (裝載滑動相簿) */
+.modal-content-slider {
+    width: 90%;
+    max-width: 1000px; /* 相簿最大寬度 */
+    max-height: 80%; /* 相簿最大高度 */
+}
+
+
+/* =================================== */
+/* 3. Modal 內部的「滑動相簿」樣式     */
+/* =================================== */
+
+/* 相簿容器 (在 Modal 內) */
+#modal-gallery-container.gallery-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #111; /* 黑色底 */
+    aspect-ratio: 16 / 9; /* 保持 16:9 比例 */
+}
+
+/* 滑動軌道 (在 Modal 內) */
+#modal-gallery-container .slider {
     display: flex;
     height: 100%;
-    transition: transform 0.4s ease-in-out; /* 滑動動畫 */
+    transition: transform 0.4s ease-in-out;
 }
 
-/* 單張圖片容器 (slide) */
-.slide {
+/* 單張 Slide (在 Modal 內) */
+#modal-gallery-container .slide {
     flex-shrink: 0;
     width: 100%;
     height: 100%;
 }
 
-/* 相簿中的圖片 */
-.gallery-img {
+/* Slide 內的圖片 (在 Modal 內) */
+#modal-gallery-container .slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 確保圖片填滿容器，不變形 */
-    cursor: zoom-in; /* 提示可以點擊放大 */
+    object-fit: contain; /* 改用 contain 確保大圖完整顯示 */
 }
 
-/* 左右切換按鈕 */
-.slide-btn {
+/* 左右按鈕 (在 Modal 內) */
+#modal-gallery-container .slide-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -183,63 +241,12 @@ header nav a.active {
     opacity: 0.7;
     transition: opacity 0.2s;
 }
-.slide-btn:hover {
+#modal-gallery-container .slide-btn:hover {
     opacity: 1;
 }
-.slide-btn.prev {
+#modal-gallery-container .slide-btn.prev {
     left: 10px;
 }
-.slide-btn.next {
+#modal-gallery-container .slide-btn.next {
     right: 10px;
-}
-
-
-/* =================================== */
-/* 4. 新增的燈箱 (Modal) 樣式          */
-/* =================================== */
-
-/* 燈箱背景 (預設隱藏) */
-.modal {
-    display: none; /* 預設隱藏，由 JS 控制 */
-    position: fixed; /* 覆蓋整個畫面 */
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85); /* 半透明黑底 */
-    
-    /* 使用 Flexbox 讓圖片垂直置中 */
-    justify-content: center;
-    align-items: center;
-}
-
-/* 放大的圖片 */
-.modal-content {
-    max-width: 90%;
-    max-height: 80%;
-    object-fit: contain;
-    /* 放大動畫 */
-    animation: zoom 0.3s ease-out;
-}
-
-/* 關閉按鈕 */
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-.close-btn:hover {
-    color: #bbb;
-}
-
-/* 放大動畫 (Keyframes) */
-@keyframes zoom {
-    from {transform: scale(0.8); opacity: 0;}
-    to {transform: scale(1); opacity: 1;}
 }
