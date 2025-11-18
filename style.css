@@ -125,3 +125,121 @@ header nav a.active {
 .btn:hover {
     background-color: #004d00;
 }
+
+/* =================================== */
+/* 3. 新增的相簿 (Slider) 樣式         */
+/* =================================== */
+
+/* 相簿外層容器 */
+.gallery-container {
+    position: relative; /* 讓左右按鈕可以定位 */
+    width: 100%;
+    max-width: 600px; /* 您可以調整最大寬度 */
+    margin: 0 auto 20px auto;
+    overflow: hidden; /* 隱藏其他圖片 */
+    border-radius: 8px;
+    background-color: #eee;
+    aspect-ratio: 3 / 2; /* 保持 3:2 的比例 */
+}
+
+/* 滑動軌道 (裝載所有圖片) */
+.slider {
+    display: flex;
+    height: 100%;
+    transition: transform 0.4s ease-in-out; /* 滑動動畫 */
+}
+
+/* 單張圖片容器 (slide) */
+.slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 相簿中的圖片 */
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 確保圖片填滿容器，不變形 */
+    cursor: zoom-in; /* 提示可以點擊放大 */
+}
+
+/* 左右切換按鈕 */
+.slide-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 20px;
+    z-index: 10;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+.slide-btn:hover {
+    opacity: 1;
+}
+.slide-btn.prev {
+    left: 10px;
+}
+.slide-btn.next {
+    right: 10px;
+}
+
+
+/* =================================== */
+/* 4. 新增的燈箱 (Modal) 樣式          */
+/* =================================== */
+
+/* 燈箱背景 (預設隱藏) */
+.modal {
+    display: none; /* 預設隱藏，由 JS 控制 */
+    position: fixed; /* 覆蓋整個畫面 */
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* 半透明黑底 */
+    
+    /* 使用 Flexbox 讓圖片垂直置中 */
+    justify-content: center;
+    align-items: center;
+}
+
+/* 放大的圖片 */
+.modal-content {
+    max-width: 90%;
+    max-height: 80%;
+    object-fit: contain;
+    /* 放大動畫 */
+    animation: zoom 0.3s ease-out;
+}
+
+/* 關閉按鈕 */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.close-btn:hover {
+    color: #bbb;
+}
+
+/* 放大動畫 (Keyframes) */
+@keyframes zoom {
+    from {transform: scale(0.8); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
